@@ -1,7 +1,6 @@
 import { Action } from '@ngrx/store';
 
 import { Pizza } from '../../models/pizza.model';
-import { type } from 'os';
 
 //load pizzas
 export const LOAD_PIZZAS = '[Products] Load Pizzas';
