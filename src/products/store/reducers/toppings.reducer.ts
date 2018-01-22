@@ -5,16 +5,25 @@ export interface ToppingState {
     entities: { [id: number]: Topping};
     loaded: boolean;
     loading: boolean;
+    selectedToppings: number[]
 }
 
 export const initialState: ToppingState = {
     entities: {},
     loaded: false,
-    loading: false
+    loading: false,
+    selectedToppings: []
 };
 
 export function reducer(state = initialState, action: fromToppings.ToppingAction): ToppingState {
     switch (action.type) {
+        case fromToppings.VISUALISE_TOPPINGS: {
+            const selectedToppings = action.payload;
+            return {
+                ...state,
+                selectedToppings
+            }
+        }
         case fromToppings.LOAD_TOPPINGS: {
             return {
                 ...state,
@@ -57,3 +66,4 @@ export function reducer(state = initialState, action: fromToppings.ToppingAction
 export const getToppingEntities = (state: ToppingState) => state.entities;
 export const getToppingLoading = (state: ToppingState) => state.loading;
 export const getToppingLoaded = (state: ToppingState) => state.loaded;
+export const getSelectedToppings = (state: ToppingState) => state.selectedToppings;
