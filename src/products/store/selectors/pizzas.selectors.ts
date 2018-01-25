@@ -19,7 +19,8 @@ export const getSelectedPizza = createSelector(
     }
 )
 
-export const getPizzaVisualised = createSelector(getSelectedPizza,
+export const getPizzaVisualised = createSelector(
+    getSelectedPizza,
     fromToppings.getToppingsEntities,
     fromToppings.getSelectedToppings,
     (pizza, toppingEntities, selectedToppings) => {
