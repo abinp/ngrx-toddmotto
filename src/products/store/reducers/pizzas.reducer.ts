@@ -55,7 +55,7 @@ export function reducer(
             }
         };
 
-        case fromPizzas.CREATE_PIZZAS_SUCCESS: {
+        case fromPizzas.CREATE_PIZZA_SUCCESS: {
             const pizza = action.payload;
             const entities = {
                 ...state.entities,
