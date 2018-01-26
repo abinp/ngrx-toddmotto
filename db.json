@@ -136,10 +136,6 @@
       "name": "test",
       "toppings": [
         {
-          "id": 1,
-          "name": "anchovy"
-        },
-        {
           "id": 2,
           "name": "bacon"
         },
@@ -176,12 +172,12 @@
           "name": "pepperoni"
         },
         {
-          "id": 9,
-          "name": "pepper"
-        },
-        {
           "id": 5,
           "name": "mozzarella"
+        },
+        {
+          "id": 9,
+          "name": "pepper"
         }
       ],
       "id": 4
