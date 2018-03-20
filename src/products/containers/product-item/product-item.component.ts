@@ -11,6 +11,7 @@ import { Topping } from '../../models/topping.model';
 @Component({
   selector: 'product-item',
   styleUrls: ['product-item.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
   template: `
     <div 
       class="product-item">
@@ -26,7 +27,7 @@ import { Topping } from '../../models/topping.model';
         </pizza-display>
       </pizza-form>
     </div>
-  `,
+  `
 })
 export class ProductItemComponent implements OnInit {
   pizza$: Observable<Pizza>;
@@ -39,7 +40,9 @@ export class ProductItemComponent implements OnInit {
     this.pizza$ = this.store.select(fromStore.getSelectedPizza).pipe(
       tap((pizza: Pizza = null) => {
         const pizzaExists = !!(pizza && pizza.toppings);
-        const toppings = pizzaExists ? pizza.toppings.map(toppings => toppings.id) : [];
+        const toppings = pizzaExists
+          ? pizza.toppings.map(toppings => toppings.id)
+          : [];
         this.store.dispatch(new fromStore.VisualiseToppings(toppings));
       })
     );
@@ -49,15 +52,15 @@ export class ProductItemComponent implements OnInit {
 
   onSelect(event: number[]) {
     this.store.dispatch(new fromStore.VisualiseToppings(event));
-   }
+  }
 
   onCreate(event: Pizza) {
     this.store.dispatch(new fromStore.CreatePizza(event));
-   }
+  }
 
   onUpdate(event: Pizza) {
     this.store.dispatch(new fromStore.UpdatePizza(event));
-   }
+  }
 
   onRemove(event: Pizza) {
     const remove = window.confirm('Are you sure?');
